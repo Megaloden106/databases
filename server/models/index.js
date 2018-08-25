@@ -1,9 +1,12 @@
-var db = require('../db').connection;
+// var db = require('../db').connection;
+var db = require('../../orm-resources/orm.js');
 
 const selectAll = `SELECT usernames.username, messages.message, roomnames.roomname  
                    FROM messages, roomnames, usernames
                    WHERE messages.roomId = roomnames.id
                    AND messages.userId = usernames.id`;
+
+const selectAllUsers = 'SELECT username FROM usernames';
                                
 const poster = {
   username: (user, userCB) => {
@@ -19,8 +22,7 @@ const poster = {
     });
   },
   message: (text, userId, roomId, postCB) => {
-    console.log('tedafdssdfdsf', text);
-    db.query(`INSERT INTO messages (userId, message, roomId) VALUES(${userId}, '${text}', ${roomId});`, (err) => {
+    db.query(`INSERT INTO messages (userId, message, roomId) VALUES(${userId}, "${text}", ${roomId});`, (err) => {
       err && console.log(err);
       postCB();
     });
@@ -48,7 +50,6 @@ module.exports = {
     }, 
     // a function which produces all the messages
     post: function ({username, text, roomname}, cb) {
-      console.log('message-----------', text);
       poster.username(username, (userId) => {
         poster.roomname(roomname, (roomId) => {
           poster.message(text, userId, roomId, cb);
@@ -60,11 +61,15 @@ module.exports = {
 
   users: {
     // Ditto as above.
-    get: function () {
-      
+    get: function (cb) {
+      db.query(selectAllUsers, (err, results) => {
+        err ? console.log(err) : cb(results);
+      });
     },
-    post: function () {
-      
+    post: function ({ username }, cb) {
+      poster.username(username, () => { 
+        cb();
+      });
     }
   }
 };

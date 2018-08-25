@@ -8,7 +8,7 @@ exports.connection = mysql.createConnection({
   host: 'localhost',
   user: 'student',
   password: 'student',
-  database: 'test'
+  database: 'chat'
 });
 
 exports.connection.connect((err) => {
@@ -23,3 +23,4 @@ exports.connection.connect((err) => {
 //     throw err;
 //   } 
 // });
+

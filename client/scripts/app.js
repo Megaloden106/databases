@@ -64,7 +64,6 @@ var app = {
       data: { order: '-createdAt' },
       success: function(data) {
         // Don't bother if we have nothing to work with
-        console.log(data);
         if (!data.results || !data.results.length) { return; }
 
         // Store messages for caching later
@@ -74,7 +73,7 @@ var app = {
         var mostRecentMessage = data.results[data.results.length - 1];
 
         // Only bother updating the DOM if we have a new message
-        if (mostRecentMessage.objectId !== app.lastMessageId) {
+        if (true) {
           // Update the UI with the fetched rooms
           app.renderRoomList(data.results);
 
@@ -163,10 +162,10 @@ var app = {
     }
 
     var $message = $('<br><span/>');
-    $message.text(message.text).appendTo($chat);
+    $message.text(message.message).appendTo($chat);
 
     // Add the message to the UI
-    app.$chats.append($chat);
+    app.$chats.prepend($chat);
 
   },
 

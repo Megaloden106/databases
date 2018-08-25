@@ -32,14 +32,3 @@ if (!module.parent) {
   app.listen(app.get('port'));
   console.log('Listening on', app.get('port'));
 }
-
-// db.connection.connect(function(err) {
-//   if (err) {
-//     console.log('Unable to connect to MySQL.');
-//     process.exit(1);
-//   } else {
-//     app.listen(3000, function() {
-//       console.log('Listening on port 3000...');
-//     });
-//   }
-// });
