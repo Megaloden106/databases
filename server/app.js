@@ -17,6 +17,7 @@ app.set('port', 3000);
 // Logging and parsing
 app.use(morgan('dev'));
 app.use(parser.json());
+console.log('-----------------------HELP--------------------------');
 
 // Set up our routes
 app.use('/classes', router);
@@ -24,9 +25,21 @@ app.use('/classes', router);
 // Serve the client files
 app.use(express.static(__dirname + '/../client'));
 
+
+
 // If we are being run directly, run the server.
 if (!module.parent) {
   app.listen(app.get('port'));
   console.log('Listening on', app.get('port'));
 }
 
+// db.connection.connect(function(err) {
+//   if (err) {
+//     console.log('Unable to connect to MySQL.');
+//     process.exit(1);
+//   } else {
+//     app.listen(3000, function() {
+//       console.log('Listening on port 3000...');
+//     });
+//   }
+// });
