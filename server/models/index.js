@@ -1,5 +1,5 @@
-// var db = require('../db').connection;
-var db = require('../../orm-resources/orm.js');
+var db = require('../db').connection;
+// var db = require('../../orm-resources/orm.js');
 
 const selectAll = `SELECT usernames.username, messages.message, roomnames.roomname  
                    FROM messages, roomnames, usernames

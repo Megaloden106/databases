@@ -8,27 +8,27 @@ USE chat;
 
 -- USE test;
 
--- CREATE TABLE usernames (
-  -- id INT NOT NULL AUTO_INCREMENT,
-  -- username VARCHAR(20) UNIQUE,
-  -- PRIMARY KEY (id)
--- );
+CREATE TABLE usernames (
+  id INT NOT NULL AUTO_INCREMENT,
+  username VARCHAR(20) UNIQUE,
+  PRIMARY KEY (id)
+);
 
--- CREATE TABLE roomnames (
-  -- id INT NOT NULL AUTO_INCREMENT,
-  -- roomname VARCHAR(20) UNIQUE,
-  -- PRIMARY KEY (id)
--- );
+CREATE TABLE roomnames (
+  id INT NOT NULL AUTO_INCREMENT,
+  roomname VARCHAR(20) UNIQUE,
+  PRIMARY KEY (id)
+);
 
--- CREATE TABLE messages (
-  -- id INT NOT NULL AUTO_INCREMENT,
-  -- userId INT NOT NULL,
-  -- message VARCHAR(100),
-  -- roomId INT NOT NULL,
-  -- PRIMARY KEY (id),
-  -- FOREIGN KEY (userId) REFERENCES usernames(id),
-  -- FOREIGN KEY (roomId) REFERENCES roomnames(id)
--- );
+CREATE TABLE messages (
+  id INT NOT NULL AUTO_INCREMENT,
+  userId INT NOT NULL,
+  message VARCHAR(100),
+  roomId INT NOT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (userId) REFERENCES usernames(id),
+  FOREIGN KEY (roomId) REFERENCES roomnames(id)
+);
 
 /* Create other tables and define schemas for them here! */
 
